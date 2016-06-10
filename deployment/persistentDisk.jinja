@@ -1,0 +1,9 @@
+{% set DISK_NAME = env['deployment'] + "-disk-" + env['name'] %}
+
+resources:
+- name: {{ DISK_NAME }}
+  type: compute.v1.disk
+  properties:
+    zone: {{ properties["zone"] }}
+    sizeGb: {{ properties["sizeGb"] }}
+    type: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/diskTypes/{{ properties["diskType"] }}

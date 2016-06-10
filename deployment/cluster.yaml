@@ -1,0 +1,26 @@
+imports:
+- path: persistentDisk.jinja
+- path: cluster.jinja
+
+resources:
+- name: blog-cluster
+  type: cluster.jinja
+  properties:
+    zone: us-east1-c
+    username: <your cluster username>
+    password: <your cluster password>
+    initialNodeCount: 2
+    diskSizeGb: 50
+    machineType: g1-small
+- name: ghost
+  type: persistentDisk.jinja
+  properties:
+    zone: us-east1-c
+    sizeGb: 20
+    diskType: pd-standard
+- name: mysql
+  type: persistentDisk.jinja
+  properties:
+    zone: us-east1-c
+    sizeGb: 20
+    diskType: pd-standard
