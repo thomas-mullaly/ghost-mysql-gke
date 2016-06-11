@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+   name: ghost-deployment
+spec:
+   replicas: 1
+   template:
+      metadata:
+         name: ghost-container
+         labels:
+            app: ghost-container
+      spec:
+         containers:
+            - image: us.gcr.io/<project id>/ghost:v1
+              name: ghost-container
+              env:
+                 - name: NODE_ENV
+                   value: "production"
+                 - name: GHOST_URL
+                   value: <url to your blog>
+                 - name: GHOST_CONTENT
+                   value: /var/lib/ghost
+                 - name: DB_USER
+                   value: <your mysql user account>
+                 - name: DB_PASSWORD
+                   value: <your mysql user password>
+                 - name: DB_NAME
+                   value: <your database name>
+              ports:
+                 - containerPort: 2368
+                   name: ghost-http
+              volumeMounts:
+                 - name: ghost-persistent-storage
+                   mountPath: /var/lib/ghost
+         volumes:
+            - name: ghost-persistent-storage
+              gcePersistentDisk:
+                 pdName: blog-disk-ghost
+                 fsType: ext4
