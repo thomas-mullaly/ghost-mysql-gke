@@ -1,6 +1,6 @@
 # Run Ghost and MySQL On GKE
 
-This repo contains the Deployment Manager, Kubernetes, and Docker configuration files I use to run Ghost and MySQL using Google Cloud Container Engine (GKE). If you would like more detailed instructions on how everything works, I'd suggest checking out my blog post on it.
+This repo contains the Deployment Manager, Kubernetes, and Docker configuration files I use to run Ghost and MySQL using Google Cloud Container Engine (GKE). If you would like more detailed instructions on how everything works, I'd suggest checking out my [blog post](http://bit.ly/1UPOd2U) on it.
 
 ## Repo Structure
 
