@@ -18,11 +18,20 @@ spec:
           name: mysql-container
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: notagoodpassword
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-root-password
             - name: MYSQL_USER
-              value: ghostuser
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-user
             - name: MYSQL_PASSWORD
-              value: notagoodpassword
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-password
             - name: MYSQL_DATABASE
               value: ghostblog
           ports:

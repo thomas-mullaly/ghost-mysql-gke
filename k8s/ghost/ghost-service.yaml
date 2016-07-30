@@ -7,8 +7,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 2368
-      protocol: TCP
+  - port: 80
+    targetPort: 2368
+    protocol: TCP
   selector:
     app: ghost-container
